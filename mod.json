@@ -1,0 +1,8 @@
+{
+    "main": "com.github.template.core.ModCore",
+    "name": "mmp-template-mod",
+    "version": "v0.0.4",
+    "minGameVersion": "146",
+    "author": "ntkiy508",
+    "java": true
+}

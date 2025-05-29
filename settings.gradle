@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenLocal()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+rootProject.name = "mmp-template-mod"      // reconfigure it

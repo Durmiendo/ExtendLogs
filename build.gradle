@@ -1,0 +1,46 @@
+plugins {
+    id "com.github.nekit508.mindustry-mod-plugin" version "$nmpVersion" apply true
+}
+
+allprojects.each {project ->
+    project.repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
+        maven { url "https://www.jitpack.io" }
+    }
+
+    project.repositories {
+        mavenCentral()
+    }
+
+    project.apply plugin: "java"
+    project.apply plugin: "idea"
+
+    project.sourceSets.main.java.srcDirs = ["src"]
+    project.sourceSets.main.resources.srcDirs = ["res"]
+}
+
+group = modGroup
+version = modVersion
+
+nmp.core project, "core"
+core.settings {
+    modName.set project.name
+    modGroup.set project.group
+    modVersion.set project.version
+    mindustryVersion.set prop("mindustryVersion")
+    generateModInfo.set true
+}
+
+core.configure {
+    genericInit()
+
+    core.configureTasks {
+        nmpGenerateModInfo {
+            modMain.set "com.github.template.core.ModCore"  // reconfigure it
+            modAuthor.set "nekit508" // reconfigure it
+        }
+    }
+}
+

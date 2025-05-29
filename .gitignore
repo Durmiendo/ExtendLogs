@@ -1,0 +1,6 @@
+/gen/*
+/build/*
+.idea/
+.gradle/
+
+settings/local.json
