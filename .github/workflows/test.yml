@@ -19,6 +19,5 @@ jobs:
       - name: Upload built jar file
         uses: actions/upload-artifact@v4
         with:
-
           name: ExtendLogs.jar
-          path: build/lib/*.jar
+          path: build/libs/*.jar
