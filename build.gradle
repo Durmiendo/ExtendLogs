@@ -26,7 +26,7 @@ version = modVersion
 
 nmp.core project, "core"
 core.settings {
-    modName.set project.name
+    modName.set "extend-logs"
     modGroup.set project.group
     modVersion.set project.version
     mindustryVersion.set prop("mindustryVersion")
@@ -38,8 +38,8 @@ core.configure {
 
     core.configureTasks {
         nmpGenerateModInfo {
-            modMain.set "com.github.template.core.ModCore"  // reconfigure it
-            modAuthor.set "nekit508" // reconfigure it
+            modMain.set "org.durmiendo.extlogs.Main"
+            modAuthor.set "Durmiendo"
         }
     }
 }

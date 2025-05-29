@@ -1,8 +1,8 @@
 {
-    "main": "com.github.template.core.ModCore",
-    "name": "mmp-template-mod",
-    "version": "v0.0.4",
+    "main": "org.durmiendo.extlogs.Main",
+    "name": "extend-logs",
+    "version": "v1",
     "minGameVersion": "146",
-    "author": "ntkiy508",
+    "author": "Durmiendo",
     "java": true
 }

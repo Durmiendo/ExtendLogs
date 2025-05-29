@@ -6,4 +6,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "mmp-template-mod"      // reconfigure it
+rootProject.name = "ExtendLogs"
