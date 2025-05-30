@@ -51,20 +51,35 @@ public class Main extends Mod {
             "[%methodName%] ",
             ""
     );
+    public static String custom = "";
     public static TextField customFormat;
     public static String callerFormat;
 
     public static void change(int to) {
         var = to;
         if (var < 0) var = 0;
-        else if (var >= def.size) callerFormat = customFormat.getText();
+        else if (var >= def.size) callerFormat = custom;
         else callerFormat = def.get(var);
         save();
     }
 
     public static void save() {
         Core.settings.put("extendedlog-loggerformat", var);
-        Core.settings.put("extendedlog-customformat", customFormat.getText());
+        Core.settings.put("extendedlog-customformat", custom);
+    }
+
+    public Main() {
+        var = Core.settings.getInt("extendedlog-loggerformat", 0);
+        custom = Core.settings.getString("extendedlog-customformat", "");
+
+        if (var < 0) var = 0;
+        else if (var >= def.size) callerFormat = custom;
+        else callerFormat = def.get(var);
+
+        Log.LogHandler handler = Log.logger;
+        Log.logger = (level, text) -> {
+            handler.log(level, getCaller() + text);
+        };
     }
 
 
@@ -72,12 +87,8 @@ public class Main extends Mod {
         Events.on(EventType.ClientLoadEvent.class, event -> {
             customFormat = new TextField();
             customFormat.setMessageText("Введите формат логгера");
-            var = Core.settings.getInt("extendedlog-loggerformat", 0);
-            customFormat.setText(Core.settings.getString("extendedlog-customformat", ""));
+            customFormat.setText(custom);
 
-            if (var < 0) var = 0;
-            else if (var >= def.size) callerFormat = customFormat.getText();
-            else callerFormat = def.get(var);
 
             Vars.ui.settings.addCategory("Логгер", Icon.terminal, b -> {
                 b.table(t -> {
@@ -91,6 +102,7 @@ public class Main extends Mod {
                     t.table(l -> {
                         l.add(customFormat).height(48f).growX();
                         l.button(Icon.okSmall, Styles.flati, 48f, () -> {
+                            custom = customFormat.getText();
                             change(def.size);
                         }).size(48f);
                     }).growX().row();
@@ -131,11 +143,6 @@ public class Main extends Mod {
                     }
                 }).growX().expandY().row();
             });
-
-            Log.LogHandler handler = Log.logger;
-            Log.logger = (level, text) -> {
-                handler.log(level, getCaller() + text);
-            };
         });
     }
 }
