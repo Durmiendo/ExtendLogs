@@ -38,6 +38,7 @@ core.configure {
 
     core.configureTasks {
         nmpGenerateModInfo {
+            modHidden.set true
             modMain.set "org.durmiendo.extlogs.Main"
             modAuthor.set "Durmiendo"
         }
