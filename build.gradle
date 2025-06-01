@@ -26,7 +26,7 @@ version = modVersion
 
 nmp.core project, "core"
 core.settings {
-    modName.set "extend-logs"
+    modName.set "extended-logs"
     modGroup.set project.group
     modVersion.set project.version
     mindustryVersion.set prop("mindustryVersion")

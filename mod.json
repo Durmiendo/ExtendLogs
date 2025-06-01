@@ -1,8 +1,9 @@
 {
     "main": "org.durmiendo.extlogs.Main",
-    "name": "extend-logs",
+    "name": "extended-logs",
     "version": "v1",
     "minGameVersion": "146",
     "author": "Durmiendo",
-    "java": true
+    "java": true,
+    "hidden": true
 }
